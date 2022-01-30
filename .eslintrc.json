@@ -5,7 +5,8 @@
     },
     "extends": [
         "plugin:react/recommended",
-        "standard"
+        "standard",
+        "plugin:react-hooks/recommended"
     ],
     "parserOptions": {
         "ecmaFeatures": {
@@ -16,9 +17,12 @@
     },
     "plugins": [
         "react",
-        "eslint-plugin-import-helpers"
+        "eslint-plugin-import-helpers",
+        "react-hooks"
     ],
     "rules": {
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "warn",
         "import-helpers/order-imports": [
             "warn",
             { // example configuration
