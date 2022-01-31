@@ -6,7 +6,8 @@
     "extends": [
         "plugin:react/recommended",
         "standard",
-        "plugin:react-hooks/recommended"
+        "plugin:react-hooks/recommended",
+        "plugin:prettier/recommended"
     ],
     "parserOptions": {
         "ecmaFeatures": {
@@ -18,9 +19,11 @@
     "plugins": [
         "react",
         "eslint-plugin-import-helpers",
-        "react-hooks"
+        "react-hooks",
+        "prettier"
     ],
     "rules": {
+        "prettier/prettier": "error",
         "react-hooks/rules-of-hooks": "error",
         "react-hooks/exhaustive-deps": "warn",
         "import-helpers/order-imports": [
