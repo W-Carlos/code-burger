@@ -13,14 +13,14 @@ export const Container = styled.div`
 `
 
 export const LoginImage = styled.img`
-    height: 70%;
+    height: 95%;
 `
 
 export const ContainerItens = styled.div`
-    height: 70%;
-    padding: 25px 75px;
+    height: 95%;
+    padding: 1.56rem 4.68rem;
     background: #373737;
-    border-radius: 0 10px 10px 0;
+    border-radius: 0 0.62rem 0.62rem 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -28,50 +28,55 @@ export const ContainerItens = styled.div`
     h1 {
         font-style: normal;
         font-weight: 500;
-        font-size: 24px;
-        line-height: 28px;
+        font-size: 1.5rem;
+        line-height: 1.75rem;
         color: #ffffff;
         text-align: center;
-        margin-top: 100px;
+        margin-top: 3.62rem;
+    }
+
+    img {
+        margin: auto;
+        width: 18.75rem;
     }
 `
 
 export const Label = styled.p`
     font-style: normal;
     font-weight: 500;
-    font-size: 12px;
-    line-height: 14px;
+    font-size: 0.75rem;
+    line-height: 0.87rem;
     color: #ffffff;
-    margin-top: 28px;
-    margin-bottom: 5px;
+    margin-top: 1.75rem;
+    margin-bottom: 0.31rem;
 `
 
 export const Input = styled.input`
-    width: 391.42px;
-    height: 38.32px;
+    width: 24.464rem;
+    height: 2.395rem;
     background: #ffffff;
     box-shadow: 3px 3px 10px rgba(74, 144, 226, 0.19);
-    border-radius: 5px;
+    border-radius: 0.31rem;
     border: none;
-    padding-left: 10px;
+    padding-left: 0.62rem;
 `
 
 export const Button = styled.button`
-    width: 182.81px;
-    height: 36.13px;
+    width: 11.426rem;
+    height: 2.258rem;
     background: #9758a6;
-    border-radius: 20px;
+    border-radius: 1.25rem;
 
     font-style: normal;
     font-weight: 500;
-    font-size: 16px;
-    line-height: 19px;
+    font-size: 1rem;
+    line-height: 1.18rem;
     text-align: center;
     border: none;
     color: #eeeeee;
     cursor: pointer;
-    margin-top: 75px;
-    margin-bottom: 25px;
+    margin-top: 4.68rem;
+    margin-bottom: 1.56rem;
 
     &:hover {
         opacity: 0.8;
@@ -85,8 +90,8 @@ export const Button = styled.button`
 export const SignInLink = styled.p`
     font-style: normal;
     font-weight: 300;
-    font-size: 14px;
-    line-height: 16px;
+    font-size: 0.87rem;
+    line-height: 1rem;
     color: #ffffff;
 
     a {
