@@ -1,6 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import React from 'react'
 import { useForm } from 'react-hook-form'
+import { toast } from 'react-toastify'
 import * as Yup from 'yup'
 
 import Logo from '../../assets/logo.svg'
@@ -43,13 +44,31 @@ function Register() {
 
     /* Acessando a api quando clicar no botão de submit */
     const onSubmit = async clientData => {
-        const response = await api.post('users', {
-            name: clientData.name,
-            email: clientData.email,
-            password: clientData.password
-        })
+        try {
+            const { status } = await api.post(
+                'users',
+                {
+                    // Adicionando toast message
+                    name: clientData.name,
+                    email: clientData.email,
+                    password: clientData.password
+                },
+                // Fazendo o axios retornar o reponse code.
+                { validateStatus: () => true }
+            )
 
-        console.log(response)
+            // Verificando status para adicionar a menssagem toast
+            if (status === 201 || status === 200) {
+                toast.success('Cadastro realizado com sucesso!')
+            } else if (status === 409) {
+                toast.error('E-mail já cadastrado! Faça login para continuar')
+            } else {
+                throw new Error() // Irá jogar direto no catch
+            }
+        } catch (err) {
+            // Erros genericos irá mostrar menssagem de falha no sistema
+            toast.error('Falha no sistema! Tente novamente')
+        }
     }
 
     return (
@@ -107,7 +126,7 @@ function Register() {
                     </Button>
                 </form>
                 <SignInLink>
-                    Já possui conta ? <a>Sing Ip</a>
+                    Já possui conta ? <a>Sing In</a>
                 </SignInLink>
             </ContainerItens>
         </Container>
