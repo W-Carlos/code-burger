@@ -7,6 +7,7 @@ import * as Yup from 'yup'
 import LoginImg from '../../assets/login-image.svg'
 import Logo from '../../assets/logo.svg'
 import Button from '../../components/Button'
+import { useUser } from '../../hooks/UserContext'
 import api from '../../services/api'
 import {
     Container,
@@ -19,6 +20,10 @@ import {
 } from './styles'
 
 function Login() {
+    const users = useUser()
+
+    console.log(users)
+
     /* Validação do formulario */
     const schema = Yup.object().shape({
         email: Yup.string()
