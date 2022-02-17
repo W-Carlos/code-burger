@@ -1,18 +1,21 @@
 /* Esse arquivo vai criar o context para armazenar as informações do usuario */
 
 import PropTypes from 'prop-types'
-import React, { createContext, useContext } from 'react'
+import React, { createContext, useContext, useState } from 'react'
 
 const UserContext = createContext({})
 
 // No provider é colocado todas as informações que serão disponibilizadas em toda a aplicação
 export const UserProvider = ({ children }) => {
-    const user = { name: 'Carlos', age: 25 }
-    const OtherUser = { name: 'Paulo', age: 30 }
-    const newUser = { name: 'Maria', age: 40 }
+    const [userData, setUserData] = useState({})
+
+    // Sempre que essa função for chamada ela irá gravar os dados do usuario.
+    const putUserData = userInfo => {
+        setUserData(userInfo)
+    }
 
     return (
-        <UserContext.Provider value={{ user, OtherUser, newUser }}>
+        <UserContext.Provider value={{ putUserData, userData }}>
             {children}
         </UserContext.Provider>
     )

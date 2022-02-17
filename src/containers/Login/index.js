@@ -20,9 +20,7 @@ import {
 } from './styles'
 
 function Login() {
-    const users = useUser()
-
-    console.log(users)
+    const { putUserData, userData } = useUser()
 
     /* Validação do formulario */
     const schema = Yup.object().shape({
@@ -45,7 +43,7 @@ function Login() {
 
     /* Acessando a api quando clicar no botão de submit */
     const onSubmit = async clientData => {
-        const response = await toast.promise(
+        const { data } = await toast.promise(
             api.post('sessions', {
                 email: clientData.email,
                 password: clientData.password
@@ -58,7 +56,8 @@ function Login() {
             }
         )
 
-        console.log(response)
+        putUserData(data)
+        console.log(userData)
     }
 
     return (
