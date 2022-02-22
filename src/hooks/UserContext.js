@@ -1,7 +1,7 @@
 /* Esse arquivo vai criar o context para armazenar as informações do usuario */
 
 import PropTypes from 'prop-types'
-import React, { createContext, useContext, useState } from 'react'
+import React, { createContext, useContext, useState, useEffect } from 'react'
 
 const UserContext = createContext({})
 
@@ -10,9 +10,31 @@ export const UserProvider = ({ children }) => {
     const [userData, setUserData] = useState({})
 
     // Sempre que essa função for chamada ela irá gravar os dados do usuario.
-    const putUserData = userInfo => {
+    const putUserData = async userInfo => {
         setUserData(userInfo)
+
+        // Gravando dados no localStorage
+        await localStorage.setItem(
+            'codeburger: userData',
+            JSON.stringify(userInfo)
+        )
     }
+
+    // Recuperando informações no localStorage
+    useEffect(() => {
+        const loadUserData = async () => {
+            const clientInfo = await localStorage.getItem(
+                'codeburger: userData'
+            )
+
+            // Verificando se existe algum dado dentro do localStorage
+            if (clientInfo) {
+                setUserData(JSON.parse(clientInfo))
+            }
+        }
+
+        loadUserData()
+    }, [])
 
     return (
         <UserContext.Provider value={{ putUserData, userData }}>

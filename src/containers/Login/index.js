@@ -20,7 +20,7 @@ import {
 } from './styles'
 
 function Login() {
-    const { putUserData, userData } = useUser()
+    const { putUserData } = useUser()
 
     /* Validação do formulario */
     const schema = Yup.object().shape({
@@ -57,7 +57,6 @@ function Login() {
         )
 
         putUserData(data)
-        console.log(userData)
     }
 
     return (
