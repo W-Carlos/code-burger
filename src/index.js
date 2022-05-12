@@ -3,13 +3,13 @@ import ReactDOM from 'react-dom'
 import { ToastContainer } from 'react-toastify'
 
 import { UserProvider } from './hooks/UserContext'
-import RoutesApp from './routes/routes'
+import Routes from './routes/routes'
 import GlobalStyles from './styles/globalStyles'
 
 ReactDOM.render(
     <>
         <UserProvider>
-            <RoutesApp />
+            <Routes />
         </UserProvider>
         <ToastContainer autoClose={2000} theme="colored" />
         <GlobalStyles />

@@ -2,23 +2,23 @@
 
 import PropTypes from 'prop-types'
 import React from 'react'
-import { Route, Navigate } from 'react-router-dom'
+import { Route, Redirect } from 'react-router-dom'
 
-function PrivateRoute({ element, ...rest }) {
+function PrivateRoute({ component, ...rest }) {
     // Verificando se o usuário está logado
-    const user = localStorage.getItem('codeburger:userData')
+    const user = localStorage.getItem('codeburger: userData')
 
     // Se usuário não existir ele vai ser redirecionado para tela de login
     if (!user) {
-        return <Navigate raplace to="/login" />
+        return <Redirect to="/login" />
+    } else {
+        // Se usuário existir ele é direcionado para tela de home
+        return <Route {...rest} component={component} />
     }
-
-    // Se usuário existir ele é direcionado para tela de home
-    return <Route {...rest} element={element} />
 }
 
 export default PrivateRoute
 
 PrivateRoute.propTypes = {
-    element: PropTypes.oneOfType([PropTypes.func, PropTypes.element])
+    component: PropTypes.oneOfType([PropTypes.func, PropTypes.element])
 }
