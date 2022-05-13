@@ -1,7 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import * as Yup from 'yup'
 
@@ -21,6 +21,7 @@ import {
 } from './styles'
 
 function Login() {
+    const history = useHistory()
     const { putUserData } = useUser()
 
     /* Validação do formulario */
@@ -58,6 +59,12 @@ function Login() {
         )
 
         putUserData(data)
+
+        // Esperando 1s para o usuario ver a menssagem e ser redirecionado para a tela de home
+        // setTimeout vai executar o que está dentro depois de um determinado tempo
+        setTimeout(() => {
+            history.push('/')
+        }, 1000)
     }
 
     return (
