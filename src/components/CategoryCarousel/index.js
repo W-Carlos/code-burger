@@ -19,7 +19,7 @@ function CategoryCarousel() {
         async function loadCategories() {
             const { data } = await api.get('categories')
 
-            console.log(data)
+            /* console.log(data) */
             setCategories(data)
         }
 
