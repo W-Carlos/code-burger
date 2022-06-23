@@ -11,7 +11,7 @@ import {
     Button
 } from './styles'
 
-function CategoryCarousel() {
+export function CategoryCarousel() {
     const [categories, setCategories] = useState([])
 
     // useEffect vai redenrizar as categorias quando a página de home for carregado
@@ -54,5 +54,3 @@ function CategoryCarousel() {
         </Container>
     )
 }
-
-export default CategoryCarousel

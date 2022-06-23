@@ -12,7 +12,7 @@ import {
     Button
 } from './styles'
 
-function OffersCarousel() {
+export function OffersCarousel() {
     const [offers, setOffers] = useState([])
 
     // useEffect vai redenrizar as categorias quando a página de home for carregado
@@ -72,5 +72,3 @@ function OffersCarousel() {
         </Container>
     )
 }
-
-export default OffersCarousel
