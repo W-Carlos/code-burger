@@ -15,8 +15,13 @@ import {
 function Products() {
     // Pegando as categorias no back-end
     const [categories, setCategories] = useState([])
+
     // Pegando os produtos no back-end
     const [products, setProducts] = useState([])
+
+    // Estado que mostra os produtos filtrados
+    const [filteredProducts, setFilteredProducts] = useState([])
+
     // Estado responsavel pela mudança de cor do botão do menu quando clicado
     const [activeCategory, setActiveCategory] = useState(0)
 
@@ -55,6 +60,20 @@ function Products() {
         loadCategories()
     }, [])
 
+    // Filtro de produtos por categoria
+    // Filtrando os produtos pelo id da categoria
+    useEffect(() => {
+        if (activeCategory === 0) {
+            setFilteredProducts(products)
+        } else {
+            const newFilteredProducts = products.filter(
+                product => product.category_id === activeCategory
+            )
+
+            setFilteredProducts(newFilteredProducts)
+        }
+    }, [activeCategory, products])
+
     return (
         <Container>
             <ProductsImage src={ProductsLogo} alt="Imagem de um hamburguer" />
@@ -75,8 +94,8 @@ function Products() {
                     ))}
             </CategoryMenu>
             <ProductsContainer>
-                {products &&
-                    products.map(product => (
+                {filteredProducts &&
+                    filteredProducts.map(product => (
                         <CardProduct key={product.id} product={product} />
                     ))}
             </ProductsContainer>
