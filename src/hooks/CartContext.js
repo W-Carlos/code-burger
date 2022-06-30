@@ -7,6 +7,14 @@ const CartContext = createContext({})
 export const CartProvider = ({ children }) => {
     const [cartProducts, setCartProducts] = useState([]) // Armazena todoso os produtos do carrinho
 
+    // Função para atualizar o localStorage
+    const updateLocalStorage = async products => {
+        await localStorage.setItem(
+            'codeburger: cartInfo',
+            JSON.stringify(products)
+        )
+    }
+
     // Função que adiciona produtos ao carrinho
     const putProductInCart = async product => {
         // console.log(product)
@@ -30,10 +38,7 @@ export const CartProvider = ({ children }) => {
         }
 
         // Gravando os itens do carrinho no localStorage
-        await localStorage.setItem(
-            'codeburger: cartInfo',
-            JSON.stringify(newCartProducts)
-        )
+        await updateLocalStorage(newCartProducts)
     }
 
     // Função para deletar itens do carrinho
@@ -43,10 +48,7 @@ export const CartProvider = ({ children }) => {
         setCartProducts(newCart)
 
         // Atualizando as informações dos itens no localStorage
-        await localStorage.setItem(
-            'codeburger: cartInfo',
-            JSON.stringify(newCart)
-        )
+        await updateLocalStorage(newCart)
     }
 
     // Função para adicionar itens no carrinho
@@ -60,10 +62,7 @@ export const CartProvider = ({ children }) => {
         setCartProducts(newCart)
 
         // Atualizando as informações dos itens no localStorage
-        await localStorage.setItem(
-            'codeburger: cartInfo',
-            JSON.stringify(newCart)
-        )
+        await updateLocalStorage(newCart)
     }
 
     // Função para remover itens do carrinho
@@ -81,10 +80,7 @@ export const CartProvider = ({ children }) => {
             setCartProducts(newCart)
 
             // Atualizando as informações dos itens no localStorage
-            await localStorage.setItem(
-                'codeburger: cartInfo',
-                JSON.stringify(newCart)
-            )
+            await updateLocalStorage(newCart)
         } else {
             deleteProducts(productId)
         }
