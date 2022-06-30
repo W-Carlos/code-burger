@@ -36,6 +36,60 @@ export const CartProvider = ({ children }) => {
         )
     }
 
+    // Função para deletar itens do carrinho
+    const deleteProducts = async productId => {
+        const newCart = cartProducts.filter(product => product.id !== productId)
+
+        setCartProducts(newCart)
+
+        // Atualizando as informações dos itens no localStorage
+        await localStorage.setItem(
+            'codeburger: cartInfo',
+            JSON.stringify(newCart)
+        )
+    }
+
+    // Função para adicionar itens no carrinho
+    const increaseProducts = async productId => {
+        const newCart = cartProducts.map(product => {
+            return product.id === productId
+                ? { ...product, quantity: product.quantity + 1 }
+                : product
+        })
+
+        setCartProducts(newCart)
+
+        // Atualizando as informações dos itens no localStorage
+        await localStorage.setItem(
+            'codeburger: cartInfo',
+            JSON.stringify(newCart)
+        )
+    }
+
+    // Função para remover itens do carrinho
+    const decreaseProducts = async productId => {
+        const cartIndex = cartProducts.findIndex(pd => pd.id === productId)
+
+        // Se a quantidade do produto for maior que um, a quantidade do produto vai ser diminuida em um
+        if (cartProducts[cartIndex].quantity > 1) {
+            const newCart = cartProducts.map(product => {
+                return product.id === productId
+                    ? { ...product, quantity: product.quantity - 1 }
+                    : product
+            })
+
+            setCartProducts(newCart)
+
+            // Atualizando as informações dos itens no localStorage
+            await localStorage.setItem(
+                'codeburger: cartInfo',
+                JSON.stringify(newCart)
+            )
+        } else {
+            deleteProducts(productId)
+        }
+    }
+
     // Fazendo o load dos itens no localStorage quando a aplicação inicia
     useEffect(() => {
         const loadUserData = async () => {
@@ -53,7 +107,14 @@ export const CartProvider = ({ children }) => {
     }, [])
 
     return (
-        <CartContext.Provider value={{ putProductInCart, cartProducts }}>
+        <CartContext.Provider
+            value={{
+                putProductInCart,
+                cartProducts,
+                increaseProducts,
+                decreaseProducts
+            }}
+        >
             {children}
         </CartContext.Provider>
     )
