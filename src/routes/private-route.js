@@ -4,6 +4,8 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
 
+import { Header } from '../components'
+
 function PrivateRoute({ component, ...rest }) {
     // Verificando se o usuário está logado
     const user = localStorage.getItem('codeburger: userData')
@@ -13,7 +15,12 @@ function PrivateRoute({ component, ...rest }) {
         return <Redirect to="/login" />
     } else {
         // Se usuário existir ele é direcionado para tela de home
-        return <Route {...rest} component={component} />
+        return (
+            <>
+                <Header />
+                <Route {...rest} component={component} />
+            </>
+        )
     }
 }
 
