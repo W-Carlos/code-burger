@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom'
 
 import Cart from '../../assets/cart.svg'
 import User from '../../assets/user.svg'
+import { useUser } from '../../hooks/UserContext'
 import {
     Container,
     ContainerLeft,
@@ -14,11 +15,19 @@ import {
 } from './styles'
 
 export function Header() {
+    const { logout } = useUser()
+
     // Navegações do botões
     const {
         push,
         location: { pathname }
     } = useHistory()
+
+    // Quando essa função for chamada, ela vai deslogar o usuario e redireciona-lo para tela de login
+    const logoutUser = () => {
+        logout()
+        push('/login')
+    }
 
     return (
         <Container>
@@ -46,7 +55,7 @@ export function Header() {
 
                 <ContainerText>
                     <p>Olá, Wend Carlos</p>
-                    <PageLinkExit>Sair</PageLinkExit>
+                    <PageLinkExit onClick={logoutUser}>Sair</PageLinkExit>
                 </ContainerText>
             </ContainerRight>
         </Container>
