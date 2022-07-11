@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React, { useState, useEffect } from 'react'
 
 import ProductsLogo from '../../assets/products-logo.svg'
@@ -12,7 +13,15 @@ import {
     ProductsContainer
 } from './styles'
 
-export function Products() {
+export function Products({ location: { state } }) {
+    // Verificado se o state existe.
+    // ? ELVES OPERATOR é um operador que verifica se uma informação existe pra continuar navegando no objeto.
+    // Se state.categoryId não existir o ELVES OPERATOR vai considerar undefined e seguir com o fluxo da aplicação sem quebrar
+    let categoryId = 0
+    if (state?.categoryId) {
+        categoryId = state.categoryId
+    }
+
     // Pegando as categorias no back-end
     const [categories, setCategories] = useState([])
 
@@ -23,7 +32,7 @@ export function Products() {
     const [filteredProducts, setFilteredProducts] = useState([])
 
     // Estado responsavel pela mudança de cor do botão do menu quando clicado
-    const [activeCategory, setActiveCategory] = useState(0)
+    const [activeCategory, setActiveCategory] = useState(categoryId)
 
     // useEffect vai redenrizar as categorias quando a página de home for carregado
     useEffect(() => {
@@ -101,4 +110,8 @@ export function Products() {
             </ProductsContainer>
         </Container>
     )
+}
+
+Products.propTypes = {
+    location: PropTypes.object
 }
