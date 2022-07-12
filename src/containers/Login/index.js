@@ -59,11 +59,16 @@ export function Login() {
         )
 
         putUserData(data)
+        console.log(data)
 
         // Esperando 1s para o usuario ver a menssagem e ser redirecionado para a tela de home
         // setTimeout vai executar o que está dentro depois de um determinado tempo
         setTimeout(() => {
-            history.push('/')
+            if (data.admin) {
+                history.push('/pedidos')
+            } else {
+                history.push('/')
+            }
         }, 1000)
     }
 
