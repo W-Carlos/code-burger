@@ -3,18 +3,16 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp'
 import Box from '@mui/material/Box'
 import Collapse from '@mui/material/Collapse'
 import IconButton from '@mui/material/IconButton'
-import Paper from '@mui/material/Paper'
 import Table from '@mui/material/Table'
 import TableBody from '@mui/material/TableBody'
 import TableCell from '@mui/material/TableCell'
-import TableContainer from '@mui/material/TableContainer'
 import TableHead from '@mui/material/TableHead'
 import TableRow from '@mui/material/TableRow'
 import Typography from '@mui/material/Typography'
 import PropTypes from 'prop-types'
 import React from 'react'
 
-import { Container } from './styles'
+import { ProductsImg } from './styles'
 
 function Row({ row }) {
     const [open, setOpen] = React.useState(false)
@@ -81,7 +79,7 @@ function Row({ row }) {
                                                 {productRow.category}
                                             </TableCell>
                                             <TableCell>
-                                                <img
+                                                <ProductsImg
                                                     src={productRow.url}
                                                     alt="Imagem-do-produto"
                                                 />
