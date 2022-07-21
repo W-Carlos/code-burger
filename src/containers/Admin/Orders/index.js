@@ -16,8 +16,6 @@ function Orders() {
     const [orders, setOrders] = useState([])
     const [rows, setRows] = useState([])
 
-    console.log(orders)
-
     useEffect(() => {
         // Carregando menu de categorias
         async function loadOrders() {
@@ -38,8 +36,6 @@ function Orders() {
             products: order.products
         }
     }
-
-    console.log(rows)
 
     useEffect(() => {
         const newRows = orders.map(ord => createData(ord))
