@@ -46,6 +46,19 @@ function Orders() {
         setRows(newRows)
     }, [filteredOrders])
 
+    // Vai atualizar todos os pedidos filtrados
+    useEffect(() => {
+        if (activeStatus === 1) {
+            setFilteredOrders(orders)
+        } else {
+            const statusIndex = status.findIndex(sts => sts.id === activeStatus)
+            const newFilteredOrders = orders.filter(
+                order => order.status === status[statusIndex].value
+            )
+            setFilteredOrders(newFilteredOrders)
+        }
+    }, [orders])
+
     // Função do filtro do menu de seleção de status
     function hundleStatus(status) {
         if (status.id === 1) {
@@ -86,7 +99,12 @@ function Orders() {
                     </TableHead>
                     <TableBody>
                         {rows.map(row => (
-                            <Row key={row.orderId} row={row} />
+                            <Row
+                                key={row.orderId}
+                                row={row}
+                                setOrders={setOrders}
+                                orders={orders}
+                            />
                         ))}
                     </TableBody>
                 </Table>
