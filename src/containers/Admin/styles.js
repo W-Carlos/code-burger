@@ -7,3 +7,6 @@ export const Container = styled.div`
     background: #efefef;
     justify-content: flex-start;
 `
+export const ContainerItems = styled.div`
+    padding: 20px;
+`
