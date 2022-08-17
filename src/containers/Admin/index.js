@@ -10,7 +10,7 @@ import { Container, ContainerItems } from './styles'
 export function Admin({ match: { path } }) {
     return (
         <Container>
-            <SideMenuAdmin />
+            <SideMenuAdmin path={path} />
             <ContainerItems>
                 {path === paths.Order && <Orders />}
                 {path === paths.ProductsList && <ListProducts />}
