@@ -31,9 +31,25 @@ export const Input = styled.input`
     border: none;
     margin-bottom: 25px;
     padding-left: 10px;
+    min-width: 280px;
 `
 
 export const ButtonStyles = styled(Button)`
     width: 100%;
     margin-top: 25px;
+`
+export const LabelUpload = styled.label`
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border: 1px dashed #ffffff;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 25px;
+    gap: 10px;
+
+    input {
+        opacity: 0;
+        width: 1px;
+    }
 `
