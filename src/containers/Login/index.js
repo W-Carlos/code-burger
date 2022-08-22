@@ -7,7 +7,7 @@ import * as Yup from 'yup'
 
 import LoginImg from '../../assets/login-image.svg'
 import Logo from '../../assets/logo.svg'
-import { Button } from '../../components'
+import { Button, ErrorMessage } from '../../components'
 import { useUser } from '../../hooks/UserContext'
 import api from '../../services/api'
 import {
@@ -16,7 +16,6 @@ import {
     ContainerItens,
     Label,
     Input,
-    ErrorMessage,
     SignInLink
 } from './styles'
 
@@ -59,7 +58,6 @@ export function Login() {
         )
 
         putUserData(data)
-        console.log(data)
 
         // Esperando 1s para o usuario ver a menssagem e ser redirecionado para a tela de home
         // setTimeout vai executar o que está dentro depois de um determinado tempo
