@@ -8,13 +8,16 @@ import TableContainer from '@mui/material/TableContainer'
 import TableHead from '@mui/material/TableHead'
 import TableRow from '@mui/material/TableRow'
 import React, { useEffect, useState } from 'react'
+import { useHistory } from 'react-router-dom'
 
+import paths from '../../../constants/paths'
 import api from '../../../services/api'
 import formatCurrency from '../../../utils/formatCurrency'
 import { Container, Img, EditIconStyles } from './styles'
 
 function ListProducts() {
     const [products, setProducts] = useState()
+    const { push } = useHistory()
 
     // Carregando todos os produtos
     useEffect(() => {
@@ -33,6 +36,11 @@ function ListProducts() {
         }
 
         return <CancelIcon style={{ color: '#CC1717' }} />
+    }
+
+    // Função para editar produto
+    function EditProduct(product) {
+        push(paths.EditProduct, { product })
     }
 
     return (
@@ -83,7 +91,9 @@ function ListProducts() {
                                         />
                                     </TableCell>
                                     <TableCell>
-                                        <EditIconStyles />
+                                        <EditIconStyles
+                                            onClick={() => EditProduct(product)}
+                                        />
                                     </TableCell>
                                 </TableRow>
                             ))}
