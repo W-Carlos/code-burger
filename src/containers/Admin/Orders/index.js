@@ -88,13 +88,21 @@ function Orders() {
             </Menu>
             <TableContainer component={Paper}>
                 <Table aria-label="collapsible table">
-                    <TableHead>
+                    <TableHead style={{ backgroundColor: '#565656' }}>
                         <TableRow>
                             <TableCell />
-                            <TableCell>Pedido</TableCell>
-                            <TableCell>Cliente</TableCell>
-                            <TableCell>Data do Pedido</TableCell>
-                            <TableCell>Status</TableCell>
+                            <TableCell style={{ color: 'white' }}>
+                                Pedido
+                            </TableCell>
+                            <TableCell style={{ color: 'white' }}>
+                                Cliente
+                            </TableCell>
+                            <TableCell style={{ color: 'white' }}>
+                                Data do Pedido
+                            </TableCell>
+                            <TableCell style={{ color: 'white' }}>
+                                Status
+                            </TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>

@@ -55,3 +55,21 @@ export const ContainerText = styled.div`
         color: #555555;
     }
 `
+
+export const ContainerAdmin = styled.div``
+
+export const AdminLink = styled.a`
+    cursor: pointer;
+    text-decoration: none;
+    color: #9758a6;
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 19px;
+    visibility: ${props => (props.adminActive ? 'visible' : 'hidden')};
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+    margin-left: 50px;
+`

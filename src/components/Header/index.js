@@ -1,3 +1,4 @@
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings'
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 
@@ -11,11 +12,14 @@ import {
     ContainerRight,
     Line,
     PageLinkExit,
-    ContainerText
+    ContainerText,
+    AdminLink,
+    ContainerAdmin
 } from './styles'
 
 export function Header() {
     const { logout, userData } = useUser()
+    console.log(userData)
 
     // Navegações do botões
     const {
@@ -57,6 +61,15 @@ export function Header() {
                     <p>Olá, {userData.name}</p>
                     <PageLinkExit onClick={logoutUser}>Sair</PageLinkExit>
                 </ContainerText>
+                <ContainerAdmin>
+                    <AdminLink
+                        onClick={() => push('/pedidos')}
+                        adminActive={userData.admin}
+                    >
+                        <AdminPanelSettingsIcon />
+                        Admin
+                    </AdminLink>
+                </ContainerAdmin>
             </ContainerRight>
         </Container>
     )

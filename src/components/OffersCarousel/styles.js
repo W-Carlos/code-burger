@@ -50,6 +50,7 @@ export const ContainerItems = styled.div`
 
 export const Image = styled.img`
     width: 200px;
+    height: 200px;
     border-radius: 15px;
     margin-bottom: 16px;
 `
