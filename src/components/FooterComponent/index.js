@@ -22,7 +22,7 @@ export function FooterComponent() {
                 <WhatsAppIcon className="icon" />
             </Socials>
             <hr />
-            <Copy>&copy; CodeBurger 2022</Copy>
+            <Copy>&copy; 2022 CodeBurger</Copy>
         </FooterContainer>
     )
 }

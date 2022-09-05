@@ -4,7 +4,8 @@ import HomeLogo from '../../assets/logo-home.svg'
 import {
     CategoryCarousel,
     OffersCarousel,
-    FooterComponent
+    FooterComponent,
+    About
 } from '../../components'
 import { Container, HomeImage } from './styles'
 
@@ -14,6 +15,7 @@ export function Home() {
             <HomeImage src={HomeLogo} alt="Logo CodeBurger" />
             <CategoryCarousel />
             <OffersCarousel />
+            <About />
             <FooterComponent />
         </Container>
     )
