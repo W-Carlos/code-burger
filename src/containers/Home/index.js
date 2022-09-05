@@ -5,7 +5,8 @@ import {
     CategoryCarousel,
     OffersCarousel,
     FooterComponent,
-    About
+    About,
+    Comments
 } from '../../components'
 import { Container, HomeImage } from './styles'
 
@@ -16,6 +17,7 @@ export function Home() {
             <CategoryCarousel />
             <OffersCarousel />
             <About />
+            <Comments />
             <FooterComponent />
         </Container>
     )

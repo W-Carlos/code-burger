@@ -3,6 +3,8 @@ import styled from 'styled-components'
 export const Container = styled.section`
     display: flex;
     align-items: center;
+    background-color: #e5e5e5;
+    padding: 35px 0;
 `
 
 export const Image = styled.img`
@@ -10,9 +12,7 @@ export const Image = styled.img`
     height: 501px;
     border-radius: 6px;
 
-    margin-top: 30px;
     margin-left: 160px;
-    margin-bottom: 50px;
 `
 
 export const DIV = styled.div`
