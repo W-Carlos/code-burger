@@ -1,6 +1,7 @@
 /* Paths de todas as rotas da aplicação */
 
 const paths = {
+  EditCategory: '/editar-categoria',
   NewCategory: '/nova-categoria',
   Categories: '/categorias',
   Order: '/pedidos',

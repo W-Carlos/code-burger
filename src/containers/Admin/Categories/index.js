@@ -35,8 +35,8 @@ function Categories() {
   }
 
   // Função para editar produto
-  function EditCategorie(categorie) {
-    push(paths.EditProduct, { categorie })
+  function EditCategory(categorie) {
+    push(paths.EditCategory, { categorie })
   }
 
   return (
@@ -72,7 +72,7 @@ function Categories() {
                     <Img src={categorie.url} alt="imagem-produto" />
                   </TableCell>
                   <TableCell>
-                    <EditIconStyles onClick={() => EditCategorie(categorie)} />
+                    <EditIconStyles onClick={() => EditCategory(categorie)} />
                   </TableCell>
                 </TableRow>
               ))}
